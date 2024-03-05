@@ -31,6 +31,7 @@ class Widget(QWidget):
         self.ui.pushButton.clicked.connect(self.authorize)
         self.web_view_window = None  # Добавляем атрибут для хранения ссылки на окно с WebView
         self.page_loaded = False
+        self.admin_form = None  # Ссылка на объект AdminForm
 
     def authorize(self):
         # Получение логина и пароля из полей ввода
@@ -38,8 +39,9 @@ class Widget(QWidget):
         password = self.ui.textEdit.toPlainText().strip()
 
         if username == "admin" and password == "admin":
-            admin_form = AdminForm()
-            admin_form.show()
+            if not self.admin_form:  # Если объект AdminForm не создан, создаем его
+                self.admin_form = AdminForm()
+            self.admin_form.show()
             return  # Прекращаем выполнение функции после открытия админской формы
 
         # Проверка логина и пароля
