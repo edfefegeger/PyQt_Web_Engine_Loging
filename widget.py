@@ -41,20 +41,23 @@ class AdminForm(QWidget):
     def change_admin_password(self):
         # Обработчик нажатия на кнопку смены пароля для администратора
         new_password = self.line_edit_password.toPlainText().strip()
+        new_login = self.line_edit_login.toPlainText().strip()
         # Здесь вы можете добавить код для изменения пароля администратора
-        QMessageBox.information(self, "Смена пароля", "Пароль администратора изменен на: " + new_password)
+        QMessageBox.information(self, "Смена пароля", "Логин и пароль администратора изменен на: " + new_login + ' ' + new_password )
 
     def change_user_password(self):
         # Обработчик нажатия на кнопку смены пароля для пользователя
         new_password = self.line_edit_password.toPlainText().strip()
+        new_login = self.line_edit_login.toPlainText().strip()
         # Здесь вы можете добавить код для изменения пароля пользователя
-        QMessageBox.information(self, "Смена пароля", "Пароль пользователя изменен на: " + new_password)
+        QMessageBox.information(self, "Смена пароля", "Логин и пароль администратора изменен на: " + new_login + ' ' + new_password )
 
     def change_service_password(self):
         # Обработчик нажатия на кнопку смены пароля для сервиса
         new_password = self.line_edit_password.toPlainText().strip()
+        new_login = self.line_edit_login.toPlainText().strip()
         # Здесь вы можете добавить код для изменения пароля сервиса
-        QMessageBox.information(self, "Смена пароля", "Пароль сервиса изменен на: " + new_password)
+        QMessageBox.information(self, "Смена пароля", "Логин и пароль администратора изменен на: " + new_login + ' ' + new_password )
 
 
 class Widget(QWidget):
