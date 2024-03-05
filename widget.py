@@ -37,7 +37,6 @@ class Widget(QWidget):
         none2 = r.readline().strip()
         http_login = r.readline().strip()
         http_password = r.readline().strip()
-        print(admin_login, http_password)
 
 
     def __init__(self, parent=None):
@@ -54,14 +53,14 @@ class Widget(QWidget):
         username = self.ui.textEdit_2.toPlainText().strip()
         password = self.ui.textEdit.toPlainText().strip()
 
-        if username == "admin" and password == "admin":
+        if username == self.admin_login and password == self.admin_password:
             if not self.admin_form:  # Если объект AdminForm не создан, создаем его
                 self.admin_form = AdminForm()
             self.admin_form.show()
             return  # Прекращаем выполнение функции после открытия админской формы
 
         # Проверка логина и пароля
-        if username == "user" and password == "user":
+        if username == self.user_login and password == self.user_password:
             # Создание нового окна для WebView
             self.web_view_window = QWidget()
             web_view_layout = QVBoxLayout()
