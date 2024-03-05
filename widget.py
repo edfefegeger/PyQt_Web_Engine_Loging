@@ -1,8 +1,27 @@
 import sys
-from PySide6.QtCore import QUrl, QTimer
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QTextEdit, QPushButton, QMessageBox
+from PySide6.QtCore import QUrl, QFile, QTimer
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QMessageBox
+from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from ui_form import Ui_Widget
+
+class AdminForm(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.ui = self.load_ui()
+        self.setup_ui()
+
+    def load_ui(self):
+        ui_file = QFile("admin.ui")
+        ui_file.open(QFile.ReadOnly)
+        loader = QUiLoader()
+        ui = loader.load(ui_file)
+        ui_file.close()
+        return ui
+
+    def setup_ui(self):
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.ui)
 
 class Widget(QWidget):
     def __init__(self, parent=None):
@@ -18,13 +37,18 @@ class Widget(QWidget):
         username = self.ui.textEdit_2.toPlainText().strip()
         password = self.ui.textEdit.toPlainText().strip()
 
+        if username == "admin" and password == "admin":
+            admin_form = AdminForm()
+            admin_form.show()
+            return  # Прекращаем выполнение функции после открытия админской формы
+
         # Проверка логина и пароля
         if username == "user" and password == "user":
             # Создание нового окна для WebView
             self.web_view_window = QWidget()
             web_view_layout = QVBoxLayout()
             self.web_view_window.setLayout(web_view_layout)
-            web_view = QWebEngineView()
+            web_view = QWebEngineView()  # Привязываем переменную web_view к QWebEngineView
             web_view_layout.addWidget(web_view)
             self.web_view_window.setWindowTitle("Web Viewer")
 
@@ -76,7 +100,7 @@ class Widget(QWidget):
             timer = QTimer(self)
             timer.setSingleShot(True)
             timer.timeout.connect(self.click_submit_button)
-            timer.start(1500)  # Задержка в миллисекундах (в данном случае, 3 секунды)
+            timer.start(1000)  # Задержка в миллисекундах (в данном случае, 3 секунды)
 
 
 

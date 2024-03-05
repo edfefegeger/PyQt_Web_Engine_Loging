@@ -22,7 +22,8 @@ class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(254, 288)
+        Widget.resize(243, 275)
+        Widget.setMaximumSize(QSize(243, 275))
         self.verticalLayout_2 = QVBoxLayout(Widget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout = QVBoxLayout()
