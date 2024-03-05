@@ -153,10 +153,11 @@ class Widget(QWidget):
     def on_web_page_load_finished(self):
         # Заполнение поля с идентификатором "name" на странице
         if not self.page_loaded:  # Проверяем, была ли страница уже загружена
+
             js_code1 = """
                 var inputField = document.getElementById("name");
                 inputField.focus();  // Установка фокуса на поле ввода
-                inputField.value = "russland";  // Вставка текста в поле ввода
+                inputField.value = "%s";  // Вставка текста в поле ввода
 
                 // Имитация событий ввода текста
                 var inputEvent = new Event('input', {
@@ -164,14 +165,14 @@ class Widget(QWidget):
                     cancelable: true,
                 });
                 inputField.dispatchEvent(inputEvent);
-            """
+            """ % self.http_login
             self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code1)
 
             # Заполнение поля с идентификатором "password" на странице
             js_code2 = """
                 var inputField = document.getElementById("password");
                 inputField.focus();  // Установка фокуса на поле ввода
-                inputField.value = "DALEKa105%";  // Вставка текста в поле ввода
+                inputField.value = "%s";  // Вставка текста в поле ввода
 
                 // Имитация событий ввода текста
                 var inputEvent = new Event('input', {
@@ -179,14 +180,14 @@ class Widget(QWidget):
                     cancelable: true,
                 });
                 inputField.dispatchEvent(inputEvent);
-            """
+            """ % self.http_password
             self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code2)
             self.page_loaded = True  # Устанавливаем флаг, что страница загружена
             # Создание таймера для задержки перед нажатием кнопки авторизации
             timer = QTimer(self)
             timer.setSingleShot(True)
             timer.timeout.connect(self.click_submit_button)
-            timer.start(1000)  # Задержка в миллисекундах (в данном случае, 3 секунды)
+            timer.start(500)  # Задержка в миллисекундах (в данном случае, 3 секунды)
 
 
 
