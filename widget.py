@@ -11,6 +11,7 @@ class Widget(QWidget):
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.authorize)
         self.web_view_window = None  # Добавляем атрибут для хранения ссылки на окно с WebView
+        self.page_loaded = False
 
     def authorize(self):
         # Получение логина и пароля из полей ввода
@@ -41,40 +42,41 @@ class Widget(QWidget):
 
     def on_web_page_load_finished(self):
         # Заполнение поля с идентификатором "name" на странице
-        js_code1 = """
-            var inputField = document.getElementById("name");
-            inputField.focus();  // Установка фокуса на поле ввода
-            inputField.value = "russland";  // Вставка текста в поле ввода
+        if not self.page_loaded:  # Проверяем, была ли страница уже загружена
+            js_code1 = """
+                var inputField = document.getElementById("name");
+                inputField.focus();  // Установка фокуса на поле ввода
+                inputField.value = "russland";  // Вставка текста в поле ввода
 
-            // Имитация событий ввода текста
-            var inputEvent = new Event('input', {
-                bubbles: true,
-                cancelable: true,
-            });
-            inputField.dispatchEvent(inputEvent);
-        """
-        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code1)
+                // Имитация событий ввода текста
+                var inputEvent = new Event('input', {
+                    bubbles: true,
+                    cancelable: true,
+                });
+                inputField.dispatchEvent(inputEvent);
+            """
+            self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code1)
 
-        # Заполнение поля с идентификатором "password" на странице
-        js_code2 = """
-            var inputField = document.getElementById("password");
-            inputField.focus();  // Установка фокуса на поле ввода
-            inputField.value = "DALEKa1052QNI1052";  // Вставка текста в поле ввода
+            # Заполнение поля с идентификатором "password" на странице
+            js_code2 = """
+                var inputField = document.getElementById("password");
+                inputField.focus();  // Установка фокуса на поле ввода
+                inputField.value = "DALEKa105%";  // Вставка текста в поле ввода
 
-            // Имитация событий ввода текста
-            var inputEvent = new Event('input', {
-                bubbles: true,
-                cancelable: true,
-            });
-            inputField.dispatchEvent(inputEvent);
-        """
-        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code2)
-
-        # Создание таймера для задержки перед нажатием кнопки авторизации
-        timer = QTimer(self)
-        timer.setSingleShot(True)
-        timer.timeout.connect(self.click_submit_button)
-        timer.start(3000)  # Задержка в миллисекундах (в данном случае, 3 секунды)
+                // Имитация событий ввода текста
+                var inputEvent = new Event('input', {
+                    bubbles: true,
+                    cancelable: true,
+                });
+                inputField.dispatchEvent(inputEvent);
+            """
+            self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code2)
+            self.page_loaded = True  # Устанавливаем флаг, что страница загружена
+            # Создание таймера для задержки перед нажатием кнопки авторизации
+            timer = QTimer(self)
+            timer.setSingleShot(True)
+            timer.timeout.connect(self.click_submit_button)
+            timer.start(1500)  # Задержка в миллисекундах (в данном случае, 3 секунды)
 
 
 
