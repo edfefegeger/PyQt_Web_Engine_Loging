@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QMessageBox
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from ui_form import Ui_Widget
-
+from PySide6.QtWidgets import QPushButton, QMessageBox, QTextEdit
 
 
 class AdminForm(QWidget):
@@ -25,6 +25,36 @@ class AdminForm(QWidget):
         layout = QVBoxLayout(self)
         layout.addWidget(self.ui)
         self.setFixedSize(243, 301)  # Установка фиксированных размеров окна администратора
+
+        # Находим кнопки и поля ввода из UI-формы
+        self.button_admin = self.findChild(QPushButton, "pushButton")
+        self.button_user = self.findChild(QPushButton, "pushButton_2")
+        self.button_service = self.findChild(QPushButton, "pushButton_3")
+        self.line_edit_login = self.findChild(QTextEdit, "textEdit")
+        self.line_edit_password = self.findChild(QTextEdit, "textEdit_2")
+
+        # Привязываем обработчики к кнопкам
+        self.button_admin.clicked.connect(self.change_admin_password)
+        self.button_user.clicked.connect(self.change_user_password)
+        self.button_service.clicked.connect(self.change_service_password)
+
+    def change_admin_password(self):
+        # Обработчик нажатия на кнопку смены пароля для администратора
+        new_password = self.line_edit_password.toPlainText().strip()
+        # Здесь вы можете добавить код для изменения пароля администратора
+        QMessageBox.information(self, "Смена пароля", "Пароль администратора изменен на: " + new_password)
+
+    def change_user_password(self):
+        # Обработчик нажатия на кнопку смены пароля для пользователя
+        new_password = self.line_edit_password.toPlainText().strip()
+        # Здесь вы можете добавить код для изменения пароля пользователя
+        QMessageBox.information(self, "Смена пароля", "Пароль пользователя изменен на: " + new_password)
+
+    def change_service_password(self):
+        # Обработчик нажатия на кнопку смены пароля для сервиса
+        new_password = self.line_edit_password.toPlainText().strip()
+        # Здесь вы можете добавить код для изменения пароля сервиса
+        QMessageBox.information(self, "Смена пароля", "Пароль сервиса изменен на: " + new_password)
 
 
 class Widget(QWidget):
