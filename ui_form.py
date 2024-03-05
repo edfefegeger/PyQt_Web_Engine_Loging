@@ -49,6 +49,7 @@ class Ui_Widget(object):
         self.textEdit_2 = QTextEdit(Widget)
         self.textEdit_2.setObjectName(u"textEdit_2")
         self.textEdit_2.setMaximumSize(QSize(16777215, 30))
+        self.textEdit_2.setFont(font1)
 
         self.verticalLayout.addWidget(self.textEdit_2)
 
@@ -62,6 +63,7 @@ class Ui_Widget(object):
         self.textEdit = QTextEdit(Widget)
         self.textEdit.setObjectName(u"textEdit")
         self.textEdit.setMaximumSize(QSize(16777215, 30))
+        self.textEdit.setFont(font1)
 
         self.verticalLayout.addWidget(self.textEdit)
 
