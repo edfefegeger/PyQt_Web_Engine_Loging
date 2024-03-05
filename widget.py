@@ -154,7 +154,7 @@ class Widget(QWidget):
         # Проверяем URL текущей загруженной страницы
         current_url = self.web_view_window.findChild(QWebEngineView).url().toString()
 
-        if current_url != "http://217.12.201.7:29152/my-profile":
+        if current_url != "http://217.12.201.7:29152/my-profile" and current_url != "http://217.12.201.7:29152/payments" and current_url != "http://217.12.201.7:29152/messages":
             if not self.page_loaded:
                 js_code1 = """
                     var inputField = document.getElementById("name");
@@ -191,10 +191,6 @@ class Widget(QWidget):
         else:
             # Если URL запрещенный, отправляемся на предыдущую страницу
             self.web_view_window.findChild(QWebEngineView).back()
-            QMessageBox.warning(self, "Уведомление", "Доступ к данной странице запрещен.")
-
-
-
 
 
     def click_submit_button(self):
