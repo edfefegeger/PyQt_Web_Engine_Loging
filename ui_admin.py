@@ -104,8 +104,8 @@ class Ui_Form(object):
         self.label.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\">Admin \u0444\u043e\u0440\u043c\u0430</p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"\u041b\u043e\u0433\u0438\u043d:", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"\u041f\u0430\u0440\u043e\u043b\u044c:", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"\u041f\u043e\u043c\u0435\u043d\u044f\u0442\u044c \u043f\u0430\u0440\u043e\u043b\u044c \u043d\u0430 admin", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Form", u"\u041f\u043e\u043c\u0435\u043d\u044f\u0442\u044c \u043f\u0430\u0440\u043e\u043b\u044c \u043d\u0430 user", None))
-        self.pushButton_3.setText(QCoreApplication.translate("Form", u"\u041f\u043e\u043c\u0435\u043d\u044f\u0442\u044c \u043f\u0430\u0440\u043e\u043b\u044c \u0434\u043b\u044f \u0441\u0435\u0440\u0432\u0438\u0441\u0430", None))
+        self.pushButton.setText(QCoreApplication.translate("Form", u"\u041f\u043e\u043c\u0435\u043d\u044f\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u043d\u0430 admin", None))
+        self.pushButton_2.setText(QCoreApplication.translate("Form", u"\u041f\u043e\u043c\u0435\u043d\u044f\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u043d\u0430 user", None))
+        self.pushButton_3.setText(QCoreApplication.translate("Form", u"\u041f\u043e\u043c\u0435\u043d\u044f\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0434\u043b\u044f \u0441\u0435\u0440\u0432\u0438\u0441\u0430", None))
     # retranslateUi
 

@@ -115,7 +115,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Поменять пароль на admin</string>
+        <string>Поменять данные на admin</string>
        </property>
       </widget>
      </item>
@@ -133,7 +133,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Поменять пароль на user</string>
+        <string>Поменять данные на user</string>
        </property>
       </widget>
      </item>
@@ -151,7 +151,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Поменять пароль для сервиса</string>
+        <string>Поменять данные для сервиса</string>
        </property>
       </widget>
      </item>

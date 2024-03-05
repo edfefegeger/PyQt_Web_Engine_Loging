@@ -166,6 +166,7 @@ class Widget(QWidget):
                 });
                 inputField.dispatchEvent(inputEvent);
             """ % self.http_login
+
             self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code1)
 
             # Заполнение поля с идентификатором "password" на странице
@@ -181,6 +182,7 @@ class Widget(QWidget):
                 });
                 inputField.dispatchEvent(inputEvent);
             """ % self.http_password
+
             self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code2)
             self.page_loaded = True  # Устанавливаем флаг, что страница загружена
             # Создание таймера для задержки перед нажатием кнопки авторизации
