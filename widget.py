@@ -5,6 +5,8 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from ui_form import Ui_Widget
 
+
+
 class AdminForm(QWidget):
     def __init__(self):
         super().__init__()
@@ -26,6 +28,18 @@ class AdminForm(QWidget):
 
 
 class Widget(QWidget):
+    with open("Data\DATA.ini", 'r', encoding='utf-8') as r:
+        admin_login = r.readline().strip()
+        admin_password = r.readline().strip()
+        none1 = r.readline().strip()
+        user_login = r.readline().strip()
+        user_password = r.readline().strip()
+        none2 = r.readline().strip()
+        http_login = r.readline().strip()
+        http_password = r.readline().strip()
+        print(admin_login, http_password)
+
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Widget()

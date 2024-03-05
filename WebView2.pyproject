@@ -2,6 +2,7 @@
     "files": [
         "widget.py",
         "form.ui",
-        "admin.ui"
+        "admin.ui",
+        "Data/DATA.txt"
     ]
 }
