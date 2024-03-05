@@ -31,10 +31,31 @@ class Widget(QWidget):
             url = "http://217.12.201.7:29152"  # Замените на ваш URL (добавляем протокол http://)
             web_view.setUrl(QUrl(url))
 
+            # Добавляем обработчик события загрузки страницы
+            web_view.loadFinished.connect(self.on_web_page_load_finished)
+
             # Отображение нового окна
             self.web_view_window.show()
         else:
             QMessageBox.warning(self, "Ошибка", "Неверный логин или пароль")
+
+    def on_web_page_load_finished(self):
+        # Заполнение поля с идентификатором "name" на странице
+        js_code = """
+            document.getElementById("name").value = "admin";
+        """
+        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code)
+
+        js_code = """
+            document.getElementById("password").value = "admin";
+        """
+        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code)
+
+        # Нажатие на кнопку с идентификатором "submit_button" на странице
+        js_code = """
+            document.querySelector('button[type="submit"]').click();
+        """
+        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
