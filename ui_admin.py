@@ -70,21 +70,23 @@ class Ui_Form(object):
         self.pushButton = QPushButton(Form)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setMinimumSize(QSize(0, 35))
-        self.pushButton.setFont(font1)
+        font2 = QFont()
+        font2.setPointSize(10)
+        self.pushButton.setFont(font2)
 
         self.verticalLayout.addWidget(self.pushButton)
 
         self.pushButton_2 = QPushButton(Form)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setMinimumSize(QSize(0, 35))
-        self.pushButton_2.setFont(font1)
+        self.pushButton_2.setFont(font2)
 
         self.verticalLayout.addWidget(self.pushButton_2)
 
         self.pushButton_3 = QPushButton(Form)
         self.pushButton_3.setObjectName(u"pushButton_3")
         self.pushButton_3.setMinimumSize(QSize(0, 35))
-        self.pushButton_3.setFont(font1)
+        self.pushButton_3.setFont(font2)
 
         self.verticalLayout.addWidget(self.pushButton_3)
 
