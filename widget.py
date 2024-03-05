@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtCore import QUrl
+from PySide6.QtCore import QUrl, QTimer
 from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QTextEdit, QPushButton, QMessageBox
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from ui_form import Ui_Widget
@@ -41,21 +41,49 @@ class Widget(QWidget):
 
     def on_web_page_load_finished(self):
         # Заполнение поля с идентификатором "name" на странице
-        js_code = """
-            document.getElementById("name").value = "admin";
-        """
-        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code)
+        js_code1 = """
+            var inputField = document.getElementById("name");
+            inputField.focus();  // Установка фокуса на поле ввода
+            inputField.value = "russland";  // Вставка текста в поле ввода
 
-        js_code = """
-            document.getElementById("password").value = "admin";
+            // Имитация событий ввода текста
+            var inputEvent = new Event('input', {
+                bubbles: true,
+                cancelable: true,
+            });
+            inputField.dispatchEvent(inputEvent);
         """
-        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code)
+        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code1)
 
+        # Заполнение поля с идентификатором "password" на странице
+        js_code2 = """
+            var inputField = document.getElementById("password");
+            inputField.focus();  // Установка фокуса на поле ввода
+            inputField.value = "DALEKa1052QNI1052";  // Вставка текста в поле ввода
+
+            // Имитация событий ввода текста
+            var inputEvent = new Event('input', {
+                bubbles: true,
+                cancelable: true,
+            });
+            inputField.dispatchEvent(inputEvent);
+        """
+        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code2)
+
+        # Создание таймера для задержки перед нажатием кнопки авторизации
+        timer = QTimer(self)
+        timer.setSingleShot(True)
+        timer.timeout.connect(self.click_submit_button)
+        timer.start(3000)  # Задержка в миллисекундах (в данном случае, 3 секунды)
+
+
+
+    def click_submit_button(self):
         # Нажатие на кнопку с идентификатором "submit_button" на странице
-        js_code = """
+        js_code3 = """
             document.querySelector('button[type="submit"]').click();
         """
-        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code)
+        self.web_view_window.findChild(QWebEngineView).page().runJavaScript(js_code3)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
