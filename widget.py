@@ -22,6 +22,8 @@ class AdminForm(QWidget):
     def setup_ui(self):
         layout = QVBoxLayout(self)
         layout.addWidget(self.ui)
+        self.setFixedSize(243, 301)  # Установка фиксированных размеров окна администратора
+
 
 class Widget(QWidget):
     def __init__(self, parent=None):
